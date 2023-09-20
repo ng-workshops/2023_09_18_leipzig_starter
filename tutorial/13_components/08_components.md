@@ -24,8 +24,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './info-item.component.html',
   styleUrls: ['./info-item.component.scss'],
 })
-export class InfoItemComponent implements OnInit {
-  private _messageValue: string;
+export class InfoItemComponent {
+  private _messageValue!: string;
 
   @Output()
   messageChange = new EventEmitter<string>();
@@ -39,10 +39,6 @@ export class InfoItemComponent implements OnInit {
     this._messageValue = val;
     this.messageChange.emit(this._messageValue);
   }
-
-  constructor() {}
-
-  ngOnInit() {}
 }
 ```
 

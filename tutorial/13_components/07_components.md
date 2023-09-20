@@ -42,7 +42,9 @@ import { MessageService } from '../message.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'info-box',
+  selector: 'app-info-box',
+  standalone: true,
+  imports: [MatCardModule, CommonModule],
   templateUrl: './info-box.component.html',
   styleUrls: ['./info-box.component.scss'],
 })
@@ -135,8 +137,7 @@ import { MessageService } from './message.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  private modal = inject(ModalService);
-  private hostElement = inject(ViewContainerRef);
+  private messageService = inject(MessageService);
 
   message = 'INIT';
   name = 'START_';

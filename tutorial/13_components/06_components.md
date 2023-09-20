@@ -29,8 +29,10 @@ import { InfoBoxComponent } from './info-box/info-box.component';
 
 @Component({
   selector: 'app-home',
-  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, InfoBoxComponent],
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   message = 'INIT';
@@ -51,6 +53,7 @@ export class HomeComponent {
 
   processReplyFromCode() {
     this.child.reply('Send from parent via CODE');
+    this.name += 'Send from parent via CODE';
   }
 }
 ```
