@@ -45,12 +45,7 @@ export class AppComponent implements OnInit {
 ## shared/modal/modal.service.ts
 
 ```ts
-import {
-  ComponentFactoryResolver,
-  Injectable,
-  ViewContainerRef,
-} from '@angular/core';
-
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { ModalComponent } from './modal.component';
 import { ModalData } from './modal.model';
 import { HostElementService } from './host/host-element.service';
@@ -59,10 +54,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private hostElementService: HostElementService
-  ) {}
+  constructor(private hostElementService: HostElementService) {}
 
   open(data: ModalData, host: ViewContainerRef): ModalComponent {
     data.type = data.type || 'primary';
@@ -81,7 +73,7 @@ export class ModalService {
     const modal = host.createComponent(ModalComponent);
 
     modal.instance.modal = data;
-    modal.instance.close.subscribe(() => modal.destroy());
+    modal.instance.closeIt.subscribe(() => modal.destroy());
     modal.instance.cancel.subscribe(() => modal.destroy());
 
     return modal.instance;
@@ -106,7 +98,7 @@ openModalGlobal() {
         type: 'warn'
       })
       .subscribe(modal => {
-        modal.close.subscribe(() => console.log('Global MODAL closed'));
+        modal.closeIt.subscribe(() => console.log('Global MODAL closed'));
       });
   }
 ```

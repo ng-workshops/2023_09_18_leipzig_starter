@@ -4,6 +4,8 @@
 
 > create file src/app/shared/modal/modal.model.ts
 
+> npx ng generate service shared/modal/modal
+
 ## shared/modal/modal.model.ts
 
 ```ts
@@ -70,8 +72,6 @@ export class ModalComponent implements OnInit {
 }
 ```
 
-> npx ng generate service shared/modal/modal
-
 ## shared/modal/modal.service.ts
 
 ```ts
@@ -109,15 +109,20 @@ export class ModalService {
 ## home/home.component.ts
 
 ```ts
+import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, ViewContainerRef, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InfoBoxComponent } from './info-box/info-box.component';
+import { MessageService } from './message.service';
+import { InfoItemComponent } from './info-item/info-item.component';
 import { ModalService } from '../shared/modal/modal.service';
 
 @Component({
   selector: 'app-home',
-  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, InfoBoxComponent, InfoItemComponent],
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   private modal = inject(ModalService);
@@ -129,7 +134,7 @@ export class HomeComponent {
       this.hostElement
     );
 
-    modal.close.subscribe(() => {
+    modal.closeIt.subscribe(() => {
       console.log('MODAL closed');
     });
 

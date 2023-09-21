@@ -97,7 +97,7 @@ https://nx.dev
 
 ### Tools
 
-- [Augury](https://augury.angular.io) Chrome Extension for debugging and profiling Angular apps
+- [Angular Dev Tools](https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh) Chrome Extension for debugging and profiling Angular apps
 - [ngrev](https://github.com/mgechev/ngrev) Tool will generate a graphical representation of the component structure of your Angular app
 - [Nx Console](https://angularconsole.com) The UI for the angular-cli as VsCode Plugin
 
